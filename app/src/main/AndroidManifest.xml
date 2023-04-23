@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileUser"
+            android:name=".NewFeed.ProfileUser"
             android:exported="false" />
         <activity
             android:name=".NewFeed.StartedActivity"

@@ -78,7 +78,6 @@ class homeAdapter : RecyclerView.Adapter<homeAdapter.HolderHome> {
                     }
                 }
                 if(img != ""){
-                    Log.i("adapter",model.image)
                     Glide.with(holder.imgView.context)
                         .load(model.image)
                         .centerCrop()

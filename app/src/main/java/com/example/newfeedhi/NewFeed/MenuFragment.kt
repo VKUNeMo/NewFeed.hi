@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newfeedhi.Model.user
@@ -35,6 +36,7 @@ class MenuFragment : Fragment() {
     private var param2: String? = null
     private lateinit var firebaseAuth: FirebaseAuth
     val TAG = "Menu"
+    private val PICK_IMAGE_REQUEST: Int = 1
     private lateinit var binding: FragmentMenuBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,9 @@ class MenuFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMenuBinding.inflate(inflater,container,false)
+        binding.nameUser.setOnClickListener {
+           toProfile()
+        }
         firebaseAuth= FirebaseAuth.getInstance()
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.addValueEventListener(object : ValueEventListener {
@@ -82,7 +87,11 @@ class MenuFragment : Fragment() {
         }
         return binding.root
     }
-
+    private fun toProfile(){
+        val intent = Intent(context, ProfileUser::class.java)
+        intent.putExtra("uid", firebaseAuth.uid)
+        context?.startActivity(intent)
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
