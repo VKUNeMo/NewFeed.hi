@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "160355874106",
+    "firebase_url": "https://test-ad435-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "test-ad435",
+    "storage_bucket": "test-ad435.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160355874106:android:05e1961d666f417f3c8c03",
+        "android_client_info": {
+          "package_name": "com.example.newfeedhi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160355874106-vkr4cf4vgbm6n7mj73ugntal2ft1lqb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRQdBz43O9TpeMTIV58Ep3-BF0QiWmQ94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160355874106-vkr4cf4vgbm6n7mj73ugntal2ft1lqb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
