@@ -1,11 +1,13 @@
 package com.example.newfeedhi.rcvAdapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newfeedhi.Model.newfeed
 import com.example.newfeedhi.Model.user
+import com.example.newfeedhi.NewFeed.DetailStatus
 import com.example.newfeedhi.NewFeed.ProfileUser
 import com.example.newfeedhi.R
 import com.example.newfeedhi.databinding.RcvItemNewfeedBinding
@@ -42,20 +45,28 @@ class homeAdapter : RecyclerView.Adapter<homeAdapter.HolderHome> {
         val imgView: ImageView = binding.img
         val imgAvt:ImageView = binding.imageView
         val timeTv: TextView = binding.time
+        val btnLike :Button = binding.btnLike
+        val item =binding.iteamNewFeed
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderHome {
         binding = RcvItemNewfeedBinding.inflate(LayoutInflater.from(context), parent, false)
         return HolderHome(binding.root)
     }
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: HolderHome, position: Int) {
         val model = newfeedArraylist[position]
         val caption = model.caption
         val img = model.image
         val time = model.timestamp
         uid = model.uid
+        holder.btnLike.setOnClickListener {
+            val ref = FirebaseDatabase.getInstance().getReference("NewFeeds/${model.id}")
+            ref.child("numberOfLike").setValue(model.numberOfLike+1)
+        }
         holder.timeTv.text = timestampToDate(time)
         holder.caption.text = caption
+        holder.btnLike.text = model.numberOfLike.toString()
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -88,6 +99,7 @@ class homeAdapter : RecyclerView.Adapter<homeAdapter.HolderHome> {
                                 .error(R.drawable.ic_broken_image))
                         .into(holder.imgView)
                 }
+
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -95,9 +107,19 @@ class homeAdapter : RecyclerView.Adapter<homeAdapter.HolderHome> {
         holder.nameUser.setOnClickListener {
             toProfile(uid)
         }
+        holder.item.setOnClickListener {
+            toDetail(model.id)
+        }
+
     }
     private fun toProfile(uid:String){
         val intent = Intent(context, ProfileUser::class.java)
+        intent.putExtra("uid", uid)
+        context.startActivity(intent)
+    }
+    private fun toDetail(id:String){
+        val intent = Intent(context, DetailStatus::class.java)
+        intent.putExtra("id", id)
         intent.putExtra("uid", uid)
         context.startActivity(intent)
     }

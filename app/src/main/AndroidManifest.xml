@@ -15,14 +15,17 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".NewFeed.DetailStatus"
+            android:exported="false" />
+        <activity
             android:name=".NewFeed.ProfileUser"
             android:exported="false" />
         <activity
             android:name=".NewFeed.StartedActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".NewFeed.AddStatusActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

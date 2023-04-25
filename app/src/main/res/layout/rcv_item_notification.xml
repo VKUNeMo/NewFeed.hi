@@ -10,7 +10,7 @@
     >
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/content"
         android:layout_width="310dp"
         android:layout_height="match_parent"
         android:layout_marginStart="80dp"
@@ -26,18 +26,27 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/content"
         android:background="@android:color/black"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="111dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgAvt"
         android:layout_width="70dp"
         android:layout_height="68dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_home_24" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

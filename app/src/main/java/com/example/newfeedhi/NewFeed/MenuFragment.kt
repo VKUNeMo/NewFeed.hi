@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.newfeedhi.LoginActivity
 import com.example.newfeedhi.Model.user
 import com.example.newfeedhi.R
 import com.example.newfeedhi.Welcome.WelcomeActivity
@@ -64,7 +65,6 @@ class MenuFragment : Fragment() {
                     if (model != null ) {
                         if(model.uid.equals(firebaseAuth.uid)){
                             binding.nameUser.text=model.name
-                            Log.i("adapterAvt",model.imgAvt)
                             Glide.with(binding.imageView.context)
                                 .load(model.imgAvt)
                                 .centerCrop()
@@ -83,7 +83,7 @@ class MenuFragment : Fragment() {
         })
         binding.btnLogOut.setOnClickListener {
             firebaseAuth.signOut()
-            startActivity(Intent(activity,WelcomeActivity::class.java))
+            startActivity(Intent(activity,LoginActivity::class.java))
         }
         return binding.root
     }
